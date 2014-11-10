@@ -1,0 +1,16 @@
+# Batch script to add the JMS configuration to the JBoss server
+
+# Start batching commands
+batch
+
+# Configure the JMS test queue
+jms-queue add --queue-address=testQueue --entries=queue/test,java:jboss/exported/jms/queue/test
+jms-topic add --queue-address=testTopic --entries=topic/test,java:jboss/exported/jms/topic/test
+
+# Run the batch commands
+run-batch
+
+# Reload the server configuration
+:reload
+
+
